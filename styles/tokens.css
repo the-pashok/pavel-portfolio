@@ -1,0 +1,33 @@
+/**
+ * Design tokens. Channel triplets ("R G B") so Tailwind's <alpha-value> works.
+ * Dark is the default; [data-theme="light"] overrides it.
+ */
+:root {
+  --bg: 10 11 9;
+  --surface: 19 21 15;
+  --surface-2: 28 31 22;
+  --fg: 242 243 238;
+  --fg-muted: 154 157 146;
+  --fg-subtle: 138 141 130;
+  --accent: 200 247 81;
+  --accent-ink: 10 11 9;
+  --accent-strong: 200 247 81;
+  --line-alpha: 0.12;
+  --line-strong-alpha: 0.2;
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg: 244 244 239;
+  --surface: 235 236 227;
+  --surface-2: 223 224 213;
+  --fg: 20 21 15;
+  --fg-muted: 90 93 82;
+  --fg-subtle: 99 102 92;
+  --accent: 77 124 255;
+  --accent-ink: 10 11 9;
+  --accent-strong: 47 95 224;
+  --line-alpha: 0.16;
+  --line-strong-alpha: 0.26;
+  color-scheme: light;
+}

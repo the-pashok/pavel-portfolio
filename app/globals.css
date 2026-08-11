@@ -1,26 +1,135 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import '../styles/tokens.css';
+
+@theme {
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1120px;
+
+  --color-bg: rgb(var(--bg));
+  --color-surface: rgb(var(--surface));
+  --color-surface-2: rgb(var(--surface-2));
+  --color-fg: rgb(var(--fg));
+  --color-fg-muted: rgb(var(--fg-muted));
+  --color-fg-subtle: rgb(var(--fg-subtle));
+  --color-accent: rgb(var(--accent));
+  --color-accent-ink: rgb(var(--accent-ink));
+  --color-accent-strong: rgb(var(--accent-strong));
+  --color-line: rgb(var(--fg) / var(--line-alpha));
+  --color-line-strong: rgb(var(--fg) / var(--line-strong-alpha));
+
+  --font-display: var(--font-display-family, "Space Grotesk"), var(--font-display-cyrillic, "Onest"), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-mono-family, "JetBrains Mono"), ui-monospace, Menlo, monospace;
+
+  --text-display-xl: clamp(3.2rem, 13vw, 11rem);
+  --text-display-xl--line-height: 0.85;
+  --text-display-xl--letter-spacing: -0.045em;
+  --text-display-xl--font-weight: 700;
+
+  --text-display-lg: clamp(2rem, 6.4vw, 5.2rem);
+  --text-display-lg--line-height: 0.98;
+  --text-display-lg--letter-spacing: -0.04em;
+  --text-display-lg--font-weight: 700;
+
+  --text-display-md: clamp(1.9rem, 5vw, 3.9rem);
+  --text-display-md--line-height: 0.95;
+  --text-display-md--letter-spacing: -0.035em;
+  --text-display-md--font-weight: 700;
+
+  --text-display-sm: clamp(1.6rem, 3.6vw, 2.7rem);
+  --text-display-sm--line-height: 1.02;
+  --text-display-sm--letter-spacing: -0.032em;
+  --text-display-sm--font-weight: 700;
+
+  --text-heading: clamp(1.35rem, 2.4vw, 2rem);
+  --text-heading--line-height: 1.08;
+  --text-heading--letter-spacing: -0.03em;
+  --text-heading--font-weight: 700;
+
+  --text-heading-sm: clamp(1.15rem, 1.6vw, 1.5rem);
+  --text-heading-sm--line-height: 1.15;
+  --text-heading-sm--letter-spacing: -0.02em;
+  --text-heading-sm--font-weight: 700;
+
+  --text-statement: clamp(1.4rem, 3.4vw, 2.6rem);
+  --text-statement--line-height: 1.12;
+  --text-statement--letter-spacing: -0.03em;
+  --text-statement--font-weight: 700;
+
+  --text-lead: clamp(1.1rem, 2.2vw, 1.6rem);
+  --text-lead--line-height: 1.3;
+  --text-lead--letter-spacing: -0.02em;
+  --text-lead--font-weight: 500;
+
+  --text-body-lg: clamp(1.05rem, 1.9vw, 1.5rem);
+  --text-body-lg--line-height: 1.5;
+  --text-body-lg--letter-spacing: -0.01em;
+
+  --text-body: clamp(0.98rem, 1.2vw, 1.1rem);
+  --text-body--line-height: 1.7;
+
+  --text-body-sm: 0.97rem;
+  --text-body-sm--line-height: 1.7;
+
+  --text-body-xs: 0.95rem;
+  --text-body-xs--line-height: 1.7;
+
+  --text-mono-lg: 12px;
+  --text-mono-lg--line-height: 1.4;
+  --text-mono-lg--letter-spacing: 0.16em;
+  --text-mono-lg--font-weight: 700;
+
+  --text-mono: 11px;
+  --text-mono--line-height: 1.5;
+  --text-mono--letter-spacing: 0.14em;
+
+  --text-mono-sm: 10.5px;
+  --text-mono-sm--line-height: 1.8;
+  --text-mono-sm--letter-spacing: 0.12em;
+
+  --spacing-section-y: clamp(56px, 8vw, 128px);
+  --spacing-section-x: clamp(15px, 4vw, 80px);
+  --spacing-card: clamp(24px, 2.8vw, 44px);
+  --spacing-gap-xl: clamp(32px, 4.5vw, 80px);
+  --spacing-gap-lg: clamp(28px, 4vw, 56px);
+  --spacing-gap-md: clamp(24px, 3vw, 40px);
+  --spacing-entry-y: clamp(40px, 5vw, 72px);
+
+  --max-width-shell: 1480px;
+  --max-width-prose: 62ch;
+  --max-width-bullets: 78ch;
+
+  --ease-reveal: cubic-bezier(0.16, 0.8, 0.28, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+    -webkit-text-size-adjust: 100%;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-bg text-fg font-display antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgb(var(--accent));
+    color: rgb(var(--accent-ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
