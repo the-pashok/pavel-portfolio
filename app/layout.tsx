@@ -1,4 +1,5 @@
 import { Space_Grotesk, Onest, JetBrains_Mono } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
 
 import { Providers } from '@/app/providers';
 
@@ -25,6 +26,46 @@ const mono = JetBrains_Mono({
   variable: '--font-mono-family',
   display: 'swap',
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://your-domain.vercel.app'),
+
+  title: 'Pavel Tseluiko | Full-Stack JavaScript Developer',
+  description:
+    'Portfolio of Pavel Tseluiko, a Full-Stack JavaScript Developer building web and mobile applications with React, Angular, Node.js, and NestJS.',
+
+  openGraph: {
+    title: 'Pavel Tseluiko | Full-Stack JavaScript Developer',
+    description:
+      'Portfolio of Pavel Tseluiko, a Full-Stack JavaScript Developer.',
+    url: '/',
+    siteName: 'Pavel Tseluiko Portfolio',
+    images: [
+      {
+        url: '/og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Pavel Tseluiko - Full-Stack JavaScript Developer',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pavel Tseluiko | Full-Stack JavaScript Developer',
+    description:
+      'Portfolio of Pavel Tseluiko, a Full-Stack JavaScript Developer.',
+    images: ['/og.png'],
+  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0b0d0f',
+};
 
 const noFlash = `(function(){try{var s=JSON.parse(localStorage.getItem('pt-ui')||'{}');var t=s&&s.state&&s.state.theme;document.documentElement.dataset.theme=t==='light'?'light':'dark';}catch(e){document.documentElement.dataset.theme='dark';}})();`;
 
