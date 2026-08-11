@@ -34,6 +34,14 @@ export const metadata: Metadata = {
   description:
     'Portfolio of Pavel Tseluiko, a Full-Stack JavaScript Developer building web and mobile applications with React, Angular, Node.js, and NestJS.',
 
+  icons: {
+    icon: [
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+  },
+
   openGraph: {
     title: 'Pavel Tseluiko | Full-Stack JavaScript Developer',
     description:
