@@ -28,7 +28,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://your-domain.vercel.app'),
+  metadataBase: new URL('https://pavel-portfolio-alpha.vercel.app'),
 
   title: 'Pavel Tseluiko | Full-Stack JavaScript Developer',
   description:
