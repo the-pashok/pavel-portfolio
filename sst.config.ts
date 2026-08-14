@@ -26,7 +26,10 @@ export default $config({
       url: {
         cors: {
           allowMethods: ['GET', 'POST'],
-          allowOrigins: ['http://localhost:3000'],
+          allowOrigins: [
+            'http://localhost:3000',
+            'https://pavel-portfolio-alpha.vercel.app',
+          ],
           allowHeaders: ['content-type'],
         },
       },
