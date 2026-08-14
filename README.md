@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pavel Tseluiko Portfolio
 
-## Getting Started
+Personal bilingual portfolio built as an Nx monorepo. The frontend is a Next.js application; projects are served by a NestJS Lambda and stored in Supabase PostgreSQL.
 
-First, run the development server:
+## Architecture
+
+```text
+apps/web          Next.js 16, React 19, TanStack Query, Zustand, Tailwind CSS v4
+apps/api          NestJS API deployed as an AWS Lambda Function URL through SST
+libs/contracts    Shared Zod schemas and TypeScript types
+supabase          PostgreSQL migrations and portfolio project data
+```
+
+The frontend requests projects from the API and validates the response with the shared Zod schema. Localized content bundled with the frontend remains a fallback if the API is unavailable.
+
+## Requirements
+
+- Node.js 20 or newer
+- npm
+- AWS CLI credentials for SST deployment
+- Supabase CLI for migrations
+
+## Setup
+
+```bash
+npm install
+cp apps/web/.env.example apps/web/.env.local
+```
+
+Set `NEXT_PUBLIC_API_URL` in `apps/web/.env.local` to a Function URL with the `/api` suffix:
+
+```dotenv
+NEXT_PUBLIC_API_URL=https://your-api-url/api
+```
+
+This is a public browser variable. Supabase credentials stay in SST secrets and must never be added to a frontend environment file.
+
+## Development
+
+Start the frontend:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the Lambda locally with SST and its linked secrets:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx sst dev --stage dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Validation
 
-## Learn More
+```bash
+npx nx lint web
+npx nx build web
+npx tsc --project apps/api/tsconfig.app.json --noEmit
+npx nx build api
+npx nx test api
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Database
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+After linking the Supabase project, apply migrations:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx supabase db push
+```
 
-## Deploy on Vercel
+Migrations create the `projects` and `project_translations` tables and insert the English and Ukrainian portfolio data. Row Level Security is enabled; only the server-side Supabase secret may read the data.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| GET | `/api/health` | Lambda health check |
+| GET | `/api/projects?lang=en` | English project cards |
+| GET | `/api/projects?lang=uk` | Ukrainian project cards |
+
+`lang` accepts only `en` and `uk`; another value returns HTTP `400`.
+
+## Deployment
+
+Deploy the backend to the SST development stage:
+
+```bash
+npx sst deploy --stage dev
+```
+
+The frontend is intended for Vercel through its GitHub integration. Set `NEXT_PUBLIC_API_URL` in Vercel and add the Vercel production domain to the Lambda CORS origins in `sst.config.ts` before production deployment.

@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import type { Project } from '@/lib/types/project';
+
 import { useSlider } from '@/lib/hooks/useSlider';
 import { ProjectCard } from './ProjectCard';
 import { SliderControls } from './SliderControls';
+
+import type { Project } from '@pavel-portfolio/contracts';
 
 export function ProjectSlider({ projects, filterKey }: { projects: Project[]; filterKey: string }) {
   const { trackRef, index, total, atStart, atEnd, progress, visibleFraction, go, reset } = useSlider([

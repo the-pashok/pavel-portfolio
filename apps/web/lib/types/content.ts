@@ -3,7 +3,7 @@ import { ProjectFilter } from '@/lib/types/project-filter';
 import { SkillGroup } from '@/lib/types/skill-group';
 import { SectionId } from '@/lib/types/section-id';
 import { Principle } from '@/lib/types/principle';
-import { Project } from '@/lib/types/project';
+import type { Project } from '@pavel-portfolio/contracts';
 import { Metric } from '@/lib/types/metric';
 import { Fact } from '@/lib/types/fact';
 

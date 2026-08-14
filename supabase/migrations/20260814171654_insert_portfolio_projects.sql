@@ -1,0 +1,41 @@
+insert into public.projects (id, tags, stack, sort_order)
+values
+  ('myreinhausen', array['angular', 'node'], array['NestJS', 'TypeORM', 'PostgreSQL', 'Keycloak', 'Nx', 'Angular', 'NgRx', 'PrimeNG'], 0),
+  ('super-express', array['angular', 'node', 'mobile'], array['Angular', 'RxJS', 'Ionic', 'Node.js', 'Express.js', 'Firebase', 'Stripe', 'PayPal', 'Maps API'], 1),
+  ('sports-platform', array['angular', 'node'], array['Angular', 'Angular Material', 'RxJS', 'Node.js', 'Express.js', 'WebSockets', 'Twilio', 'Google OAuth'], 2),
+  ('vpn-saas', array['angular'], array['Angular', 'RxJS', 'PHP', 'Stripe'], 3),
+  ('us-logistics', array['react', 'mobile'], array['React', 'React Native', 'Redux', 'Context API', 'Hooks'], 4),
+  ('ad-platform', array['react'], array['React', 'TypeScript', 'Context API', 'Hooks', 'Tailwind CSS'], 5),
+  ('pavel-portfolio', array['react'], array['React', 'Next.js', 'TypeScript', 'Zustand', 'TanStack Query', 'Tailwind CSS'], 6),
+  ('noveshex-fitness-platform', array['react', 'mobile'], array['React', 'React Native', 'Expo', 'TypeScript'], 7),
+  ('mama-travel', array['angular'], array['Angular', 'RxJS', 'PHP'], 8),
+  ('5-ocean', array[]::text[], array['HTML', 'SCSS', 'JavaScript', 'jQuery', 'Webpack'], 9),
+  ('kholst', array[]::text[], array['HTML', 'SCSS', 'JavaScript', 'jQuery', 'Webpack'], 10),
+  ('polyhim', array[]::text[], array['HTML', 'SCSS', 'JavaScript', 'jQuery', 'Webpack', 'WordPress'], 11);
+
+insert into public.project_translations (project_id, lang, title, meta, body)
+values
+  ('myreinhausen', 'en', 'Customer Platform', 'MyReinhausen · 2021 - 2026', 'An enterprise energy-sector customer portal owned end to end: NestJS API, PostgreSQL schema and migrations, Keycloak authentication, and an Angular front end with reporting modules and role-based interfaces.'),
+  ('myreinhausen', 'uk', 'Клієнтська платформа', 'MyReinhausen · 2021 - 2026', 'Enterprise-портал для клієнтів в енергетичному секторі, який я вів цілком: NestJS API, схема та міграції PostgreSQL, автентифікація Keycloak і фронтенд на Angular з модулями звітності та role-based інтерфейсами.'),
+  ('super-express', 'en', 'Super Express', 'Procoders · 2021', 'An online supermarket for a Portuguese client - web storefront, admin panel and an Ionic mobile app, plus a separate delivery app with real-time courier tracking, ETA and live location on the map.'),
+  ('super-express', 'uk', 'Super Express', 'Procoders · 2021', 'Онлайн-супермаркет для клієнта з Португалії - веб-вітрина, адмін-панель і мобільний застосунок на Ionic, плюс окремий застосунок доставки з відстеженням кур’єра, ETA та live-позицією на карті в реальному часі.'),
+  ('sports-platform', 'en', 'Sports Events Platform', 'Darly Solutions · 2019 - 2021', 'A platform for organising sports events: event creation and scheduling, user profiles, real-time notifications and comments, chat and SMS verification via Twilio, and Google sign-in.'),
+  ('sports-platform', 'uk', 'Платформа для спортивних подій', 'Darly Solutions · 2019 - 2021', 'Платформа для організації спортивних подій: створення та планування івентів, профілі користувачів, real-time сповіщення й коментарі, чат і SMS-верифікація через Twilio, вхід через Google.'),
+  ('vpn-saas', 'en', 'VPN Subscriptions SaaS', 'Darly Solutions · 2019 - 2021', 'A SaaS app for managing VPN access - Stripe-based paid subscriptions unlock more capabilities, with a free tier for basic use.'),
+  ('vpn-saas', 'uk', 'SaaS для VPN-підписок', 'Darly Solutions · 2019 - 2021', 'SaaS-застосунок для роботи з VPN - платні підписки на Stripe відкривають більше можливостей, є безкоштовний тариф для базового використання.'),
+  ('us-logistics', 'en', 'US Logistics App', 'Darly Solutions · 2019 - 2021', 'A logistics app for the US market - pick the right vehicle for a given cargo and date, set pickup and drop-off, and manage shipments end to end.'),
+  ('us-logistics', 'uk', 'Логістичний застосунок (США)', 'Darly Solutions · 2019 - 2021', 'Логістичний застосунок для ринку США - вибір транспорту під конкретний вантаж і дату, точки завантаження й розвантаження та управління відправленнями.'),
+  ('ad-platform', 'en', 'Advertising Platform', 'Darly Solutions · 2019 - 2021', 'A platform for advertising agencies - build campaigns within a set budget through complex multi-step forms, with account and campaign management.'),
+  ('ad-platform', 'uk', 'Рекламна платформа', 'Darly Solutions · 2019 - 2021', 'Платформа для рекламних агенцій - створення кампаній під заданий бюджет через складні багатокрокові форми, управління акаунтами та кампаніями.'),
+  ('pavel-portfolio', 'en', 'Personal Portfolio', 'Personal project · 2026', 'A portfolio website about me: bilingual content, stack filtering, animated sections and a responsive React interface built to present experience, projects and contact details clearly.'),
+  ('pavel-portfolio', 'uk', 'Особисте портфоліо', 'Personal project · 2026', 'Сайт-портфоліо про мене: двомовний контент, фільтрація за стеком, анімовані секції та адаптивний React-інтерфейс для досвіду, проєктів і контактів.'),
+  ('noveshex-fitness-platform', 'en', 'Noveshex Fitness Platform', 'Personal project · In development', 'My personal fitness platform, currently in development: React and React Native apps for training, nutrition, supplements and progress workflows.'),
+  ('noveshex-fitness-platform', 'uk', 'Noveshex Fitness Platform', 'Особистий проєкт · In development', 'Моя особиста fitness platform, зараз in development: React і React Native застосунки для тренувань, харчування, добавок і відстеження прогресу.'),
+  ('mama-travel', 'en', 'Mama Travel', 'Darly Solutions · 2019 - 2021', 'A travel-agency website with tour search, browsing and a booking flow.'),
+  ('mama-travel', 'uk', 'Mama Travel', 'Darly Solutions · 2019 - 2021', 'Сайт турагенції з пошуком турів, переглядом і бронюванням.'),
+  ('5-ocean', 'en', '5 Ocean', 'Bonum Studio · 2018 - 2019', 'A responsive, cross-browser marketing website for a travel agency - hand-built and mobile-first.'),
+  ('5-ocean', 'uk', '5 Ocean', 'Bonum Studio · 2018 - 2019', 'Адаптивний кросбраузерний промо-сайт для турагенції - зверстаний вручну, mobile-first.'),
+  ('kholst', 'en', 'Kholst', 'Bonum Studio · 2018 - 2019', 'A single-page landing to order custom canvases - upload a photo and preview it printed on canvas.'),
+  ('kholst', 'uk', 'Холст', 'Bonum Studio · 2018 - 2019', 'Односторінковий лендинг для замовлення холстів - завантажуєш фото й бачиш прев’ю на друкованому холсті.'),
+  ('polyhim', 'en', 'Polyhim', 'Bonum Studio · 2018 - 2019', 'A multi-page website for an agriculture supplier - ordering films, drip irrigation, netting and other agro goods.'),
+  ('polyhim', 'uk', 'Поліхім', 'Bonum Studio · 2018 - 2019', 'Багатосторінковий сайт для постачальника агротоварів - замовлення плівки, крапельного зрошення, сітки та іншого.');

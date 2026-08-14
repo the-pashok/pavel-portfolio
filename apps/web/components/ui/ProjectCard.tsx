@@ -1,5 +1,6 @@
-import type { Project } from '@/lib/types/project';
 import { MonoLabel } from './MonoLabel';
+
+import type { Project } from '@pavel-portfolio/contracts';
 
 interface ProjectCardProps {
   project: Project;
